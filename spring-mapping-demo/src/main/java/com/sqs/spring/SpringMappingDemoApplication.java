@@ -32,7 +32,7 @@ public class SpringMappingDemoApplication {
     }
 
     private void deleteInstructorDetail(AppDAO appDAO) {
-	int theId = 2;
+	int theId = 3;
 	appDAO.deleteInstructorDetailById(theId);
     }
 
