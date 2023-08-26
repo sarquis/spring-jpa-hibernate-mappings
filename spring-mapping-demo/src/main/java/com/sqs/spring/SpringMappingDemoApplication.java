@@ -25,11 +25,18 @@ public class SpringMappingDemoApplication {
 	    // createInstructor(appDAO);
 	    // findInstructor(appDAO);
 	    // deleteInstructor(appDAO);
-	    findInstructorDetail(appDAO);
+	    // findInstructorDetail(appDAO);
+	    deleteInstructorDetail(appDAO);
 	};
 
     }
 
+    private void deleteInstructorDetail(AppDAO appDAO) {
+	int theId = 2;
+	appDAO.deleteInstructorDetailById(theId);
+    }
+
+    @SuppressWarnings("unused")
     private void findInstructorDetail(AppDAO appDAO) {
 
 	int theId = 2;

@@ -59,11 +59,6 @@ public class InstructorDetail {
 	this.hobby = hobby;
     }
 
-    @Override
-    public String toString() {
-	return "InstructorDetail [id=" + id + ", youtubeChannel=" + youtubeChannel + ", hobby=" + hobby + "]";
-    }
-
     public Instructor getInstructor() {
 	return instructor;
     }
@@ -71,4 +66,10 @@ public class InstructorDetail {
     public void setInstructor(Instructor instructor) {
 	this.instructor = instructor;
     }
+
+    @Override
+    public String toString() {
+	return "InstructorDetail [id=" + id + ", youtubeChannel=" + youtubeChannel + ", hobby=" + hobby + "]";
+    }
+
 }
