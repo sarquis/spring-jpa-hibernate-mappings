@@ -32,11 +32,20 @@ public class SpringMappingDemoApplication {
 	    // deleteInstructorDetail(appDAO);
 	    // createInstructorWithCourses(appDAO);
 	    // findInstructorWithCourses(appDAO);
-	    findCoursesForInstructor(appDAO);
+	    // findCoursesForInstructor(appDAO);
+	    findInstructorWithCoursesJoinFetch(appDAO);
 	};
 
     }
 
+    private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
+	int theId = 100;
+	Instructor tempInstructor = appDAO.findInstructorByIdJoinFetch(theId);
+	System.out.println(tempInstructor);
+	System.out.println(tempInstructor.getCourses());
+    }
+
+    @SuppressWarnings("unused")
     private void findCoursesForInstructor(AppDAO appDAO) {
 	int theId = 1;
 	Instructor tempInstructor = appDAO.findInstructorById(theId);
