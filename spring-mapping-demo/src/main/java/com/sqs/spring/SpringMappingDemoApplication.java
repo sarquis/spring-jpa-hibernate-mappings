@@ -1,5 +1,7 @@
 package com.sqs.spring;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,11 +30,31 @@ public class SpringMappingDemoApplication {
 	    // deleteInstructor(appDAO);
 	    // findInstructorDetail(appDAO);
 	    // deleteInstructorDetail(appDAO);
-	    createInstructorWithCourses(appDAO);
+	    // createInstructorWithCourses(appDAO);
+	    // findInstructorWithCourses(appDAO);
+	    findCoursesForInstructor(appDAO);
 	};
 
     }
 
+    private void findCoursesForInstructor(AppDAO appDAO) {
+	int theId = 1;
+	Instructor tempInstructor = appDAO.findInstructorById(theId);
+	System.out.println(tempInstructor);
+	List<Course> courses = appDAO.findCoursesByInstructorId(theId);
+	tempInstructor.setCourses(courses);
+	System.out.println(tempInstructor.getCourses());
+    }
+
+    @SuppressWarnings("unused")
+    private void findInstructorWithCourses(AppDAO appDAO) {
+	int theId = 1;
+	Instructor tempInstructor = appDAO.findInstructorById(theId);
+	System.out.println(tempInstructor);
+	System.out.println(tempInstructor.getCourses());
+    }
+
+    @SuppressWarnings("unused")
     private void createInstructorWithCourses(AppDAO appDAO) {
 	Instructor tempInstructor = new Instructor("Susan", "Public", "susan@email.com");
 	InstructorDetail tempInstructorDetail = new InstructorDetail("http://www.susan.com/youtube", "gamer!!!");
