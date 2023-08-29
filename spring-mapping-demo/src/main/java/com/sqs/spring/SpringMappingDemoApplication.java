@@ -33,11 +33,29 @@ public class SpringMappingDemoApplication {
 	    // createInstructorWithCourses(appDAO);
 	    // findInstructorWithCourses(appDAO);
 	    // findCoursesForInstructor(appDAO);
-	    findInstructorWithCoursesJoinFetch(appDAO);
+	    // findInstructorWithCoursesJoinFetch(appDAO);
+	    // updateInstructor(appDAO);
+	    updateCourse(appDAO);
 	};
 
     }
 
+    private void updateCourse(AppDAO appDAO) {
+	int theId = 10;
+	Course tempCourse = appDAO.findCourseById(theId);
+	tempCourse.setTitle("Play basketball");
+	appDAO.update(tempCourse);
+    }
+
+    @SuppressWarnings("unused")
+    private void updateInstructor(AppDAO appDAO) {
+	int theId = 1;
+	Instructor tempInstructor = appDAO.findInstructorById(theId);
+	tempInstructor.setLastName("TESTER");
+	appDAO.update(tempInstructor);
+    }
+
+    @SuppressWarnings("unused")
     private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
 	int theId = 100;
 	Instructor tempInstructor = appDAO.findInstructorByIdJoinFetch(theId);
