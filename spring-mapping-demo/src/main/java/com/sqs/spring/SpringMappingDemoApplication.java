@@ -35,15 +35,17 @@ public class SpringMappingDemoApplication {
 	    // findCoursesForInstructor(appDAO);
 	    // findInstructorWithCoursesJoinFetch(appDAO);
 	    // updateInstructor(appDAO);
-	    updateCourse(appDAO);
+	    // updateCourse(appDAO);
+	    deleteInstructor(appDAO);
 	};
 
     }
 
+    @SuppressWarnings("unused")
     private void updateCourse(AppDAO appDAO) {
 	int theId = 10;
-	Course tempCourse = appDAO.findCourseById(theId);
-	tempCourse.setTitle("Play basketball");
+	Course tempCourse = appDAO.findCourseById(theId); // to fill all fields.
+	tempCourse.setTitle("Coding for life...");
 	appDAO.update(tempCourse);
     }
 
