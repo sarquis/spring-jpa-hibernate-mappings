@@ -11,6 +11,7 @@ import com.sqs.spring.dao.AppDAO;
 import com.sqs.spring.entity.Course;
 import com.sqs.spring.entity.Instructor;
 import com.sqs.spring.entity.InstructorDetail;
+import com.sqs.spring.entity.Review;
 
 @SpringBootApplication
 public class SpringMappingDemoApplication {
@@ -37,11 +38,23 @@ public class SpringMappingDemoApplication {
 	    // updateInstructor(appDAO);
 	    // updateCourse(appDAO);
 	    // deleteInstructor(appDAO);
-	    deleteCourseById(appDAO);
+	    // deleteCourseById(appDAO);
+	    createCourseAndReviews(appDAO);
 	};
 
     }
 
+    private void createCourseAndReviews(AppDAO appDAO) {
+	Course course = new Course("Speedrun Battletoads - tips and tricks.");
+	course.addReview(new Review("Great course!"));
+	course.addReview(new Review("Cool course!"));
+	course.addReview(new Review("Job well done!"));
+	appDAO.save(course);
+	System.out.println(course);
+	System.out.println(course.getReviews());
+    }
+
+    @SuppressWarnings("unused")
     private void deleteCourseById(AppDAO appDAO) {
 	int theId = 10;
 	appDAO.deleteCourseById(theId);

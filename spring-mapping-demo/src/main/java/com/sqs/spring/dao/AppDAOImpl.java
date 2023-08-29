@@ -99,4 +99,10 @@ public class AppDAOImpl implements AppDAO {
 	entityManager.remove(tempCourse);
     }
 
+    @Override
+    @Transactional
+    public void save(Course theCourse) {
+	entityManager.persist(theCourse);
+    }
+
 }
