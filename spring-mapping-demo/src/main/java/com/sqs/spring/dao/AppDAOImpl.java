@@ -17,7 +17,7 @@ public class AppDAOImpl implements AppDAO {
 
     private EntityManager entityManager;
 
-    // @Autowired
+    // @Autowired (no need)
     public AppDAOImpl(EntityManager entityManager) {
 	this.entityManager = entityManager;
     }
@@ -57,7 +57,7 @@ public class AppDAOImpl implements AppDAO {
 
     @Override
     public List<Course> findCoursesByInstructorId(int theId) {
-	TypedQuery<Course> query = entityManager.createQuery("from Course where instructor.id = :data", Course.class);
+	TypedQuery<Course> query = entityManager.createQuery("FROM Course WHERE instructor.id = :data", Course.class);
 	query.setParameter("data", theId);
 	List<Course> courses = query.getResultList();
 	return courses;
@@ -90,6 +90,13 @@ public class AppDAOImpl implements AppDAO {
     @Override
     public Course findCourseById(int theId) {
 	return entityManager.find(Course.class, theId);
+    }
+
+    @Override
+    @Transactional
+    public void deleteCourseById(int theId) {
+	Course tempCourse = entityManager.find(Course.class, theId);
+	entityManager.remove(tempCourse);
     }
 
 }

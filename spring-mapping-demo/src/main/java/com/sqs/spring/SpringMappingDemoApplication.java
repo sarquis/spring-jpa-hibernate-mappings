@@ -36,9 +36,15 @@ public class SpringMappingDemoApplication {
 	    // findInstructorWithCoursesJoinFetch(appDAO);
 	    // updateInstructor(appDAO);
 	    // updateCourse(appDAO);
-	    deleteInstructor(appDAO);
+	    // deleteInstructor(appDAO);
+	    deleteCourseById(appDAO);
 	};
 
+    }
+
+    private void deleteCourseById(AppDAO appDAO) {
+	int theId = 10;
+	appDAO.deleteCourseById(theId);
     }
 
     @SuppressWarnings("unused")
