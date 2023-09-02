@@ -26,26 +26,12 @@ public class SpringMappingDemoApplication {
     CommandLineRunner commandLineRunner(AppDAO appDAO) {
 
 	return runner -> {
-	    // createInstructor(appDAO);
-	    // findInstructor(appDAO);
-	    // deleteInstructor(appDAO);
-	    // findInstructorDetail(appDAO);
-	    // deleteInstructorDetail(appDAO);
-	    // createInstructorWithCourses(appDAO);
-	    // findInstructorWithCourses(appDAO);
-	    // findCoursesForInstructor(appDAO);
-	    // findInstructorWithCoursesJoinFetch(appDAO);
-	    // updateInstructor(appDAO);
-	    // updateCourse(appDAO);
-	    // deleteInstructor(appDAO);
-	    // deleteCourseById(appDAO);
-	    // createCourseAndReviews(appDAO);
-	    // retrieveCourseAndReviews(appDAO);
-	    deleteCourseAndReviews(appDAO);
+
 	};
 
     }
 
+    @SuppressWarnings("unused")
     private void deleteCourseAndReviews(AppDAO appDAO) {
 	int theId = 10;
 	appDAO.deleteCourseById(theId);
