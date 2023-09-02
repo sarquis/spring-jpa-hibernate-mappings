@@ -39,11 +39,27 @@ public class SpringMappingDemoApplication {
 	    // updateCourse(appDAO);
 	    // deleteInstructor(appDAO);
 	    // deleteCourseById(appDAO);
-	    createCourseAndReviews(appDAO);
+	    // createCourseAndReviews(appDAO);
+	    // retrieveCourseAndReviews(appDAO);
+	    deleteCourseAndReviews(appDAO);
 	};
 
     }
 
+    private void deleteCourseAndReviews(AppDAO appDAO) {
+	int theId = 10;
+	appDAO.deleteCourseById(theId);
+    }
+
+    @SuppressWarnings("unused")
+    private void retrieveCourseAndReviews(AppDAO appDAO) {
+	int theId = 10;
+	Course tempCourse = appDAO.findCourseAndReviewsByCourseId(theId);
+	System.out.println(tempCourse);
+	System.out.println(tempCourse.getReviews());
+    }
+
+    @SuppressWarnings("unused")
     private void createCourseAndReviews(AppDAO appDAO) {
 	Course course = new Course("Speedrun Battletoads - tips and tricks.");
 	course.addReview(new Review("Great course!"));
