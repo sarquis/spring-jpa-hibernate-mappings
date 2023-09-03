@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sqs.spring.entity.Course;
 import com.sqs.spring.entity.Instructor;
 import com.sqs.spring.entity.InstructorDetail;
+import com.sqs.spring.entity.Student;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -107,13 +108,41 @@ public class AppDAOImpl implements AppDAO {
 
     @Override
     public Course findCourseAndReviewsByCourseId(int theId) {
-	String sql = " SELECT c FROM Course c 	";
+	String sql = " SELECT c FROM Course c 		";
 	sql += "     LEFT JOIN FETCH c.reviews 		";
 	sql += "               WHERE c.id = :data 	";
 	TypedQuery<Course> query = entityManager.createQuery(sql, Course.class);
 	query.setParameter("data", theId);
 	Course course = query.getSingleResult();
 	return course;
+    }
+
+    @Override
+    public Course findCourseAndStudentsByCourseId(int theId) {
+	String sql = " SELECT c FROM Course c 		";
+	sql += "     LEFT JOIN FETCH c.students 	";
+	sql += "               WHERE c.id = :data 	";
+	TypedQuery<Course> query = entityManager.createQuery(sql, Course.class);
+	query.setParameter("data", theId);
+	Course course = query.getSingleResult();
+	return course;
+    }
+
+    @Override
+    public Student findStudentAndCoursesByStudentId(int theId) {
+	String sql = " SELECT s FROM Student s 		";
+	sql += "     LEFT JOIN FETCH s.courses 		";
+	sql += "               WHERE s.id = :data 	";
+	TypedQuery<Student> query = entityManager.createQuery(sql, Student.class);
+	query.setParameter("data", theId);
+	Student student = query.getSingleResult();
+	return student;
+    }
+
+    @Override
+    @Transactional
+    public void update(Student tempStudent) {
+	entityManager.merge(tempStudent);
     }
 
 }

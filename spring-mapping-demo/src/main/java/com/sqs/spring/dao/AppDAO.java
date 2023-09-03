@@ -5,6 +5,7 @@ import java.util.List;
 import com.sqs.spring.entity.Course;
 import com.sqs.spring.entity.Instructor;
 import com.sqs.spring.entity.InstructorDetail;
+import com.sqs.spring.entity.Student;
 
 public interface AppDAO {
 
@@ -33,4 +34,10 @@ public interface AppDAO {
     void save(Course theCourse);
 
     Course findCourseAndReviewsByCourseId(int theId);
+
+    Course findCourseAndStudentsByCourseId(int theId);
+
+    Student findStudentAndCoursesByStudentId(int theId);
+
+    void update(Student tempStudent);
 }

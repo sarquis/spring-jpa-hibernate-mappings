@@ -12,6 +12,7 @@ import com.sqs.spring.entity.Course;
 import com.sqs.spring.entity.Instructor;
 import com.sqs.spring.entity.InstructorDetail;
 import com.sqs.spring.entity.Review;
+import com.sqs.spring.entity.Student;
 
 @SpringBootApplication
 public class SpringMappingDemoApplication {
@@ -26,9 +27,49 @@ public class SpringMappingDemoApplication {
     CommandLineRunner commandLineRunner(AppDAO appDAO) {
 
 	return runner -> {
-
+	    // createCourseAndStudents(appDAO);
+	    // findCourseAndStudents(appDAO);
+	    // findStudentAndCourses(appDAO);
+	    addMoreCoursesForStudent(appDAO);
 	};
 
+    }
+
+    private void addMoreCoursesForStudent(AppDAO appDAO) {
+	int theId = 2;
+	Student student = appDAO.findStudentAndCoursesByStudentId(theId);
+	Course course1 = new Course("How to dunk - Shaq style");
+	Course course2 = new Course("Atari 2600 - Game Development");
+	student.addCourse(course1);
+	student.addCourse(course2);
+	appDAO.update(student);
+    }
+
+    @SuppressWarnings("unused")
+    private void findStudentAndCourses(AppDAO appDAO) {
+	int theId = 2;
+	Student tempStudent = appDAO.findStudentAndCoursesByStudentId(theId);
+	System.out.println(tempStudent);
+	System.out.println(tempStudent.getCourses());
+    }
+
+    @SuppressWarnings("unused")
+    private void findCourseAndStudents(AppDAO appDAO) {
+	int theId = 11;
+	Course tempCourse = appDAO.findCourseAndStudentsByCourseId(theId);
+	System.out.println(tempCourse);
+	System.out.println(tempCourse.getStudents());
+
+    }
+
+    @SuppressWarnings("unused")
+    private void createCourseAndStudents(AppDAO appDAO) {
+	Course course = new Course("Make a shot - Nothing but net.");
+	Student student1 = new Student("John", "Doe", "john@email.com");
+	Student student2 = new Student("Mary", "Anne", "mary@email.com");
+	course.addStudent(student1);
+	course.addStudent(student2);
+	appDAO.save(course);
     }
 
     @SuppressWarnings("unused")
