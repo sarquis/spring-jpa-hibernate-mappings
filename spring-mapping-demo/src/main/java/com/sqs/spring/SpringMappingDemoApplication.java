@@ -30,11 +30,13 @@ public class SpringMappingDemoApplication {
 	    // createCourseAndStudents(appDAO);
 	    // findCourseAndStudents(appDAO);
 	    // findStudentAndCourses(appDAO);
-	    addMoreCoursesForStudent(appDAO);
+	    // addMoreCoursesForStudent(appDAO);
+	    deleteCourseById(appDAO);
 	};
 
     }
 
+    @SuppressWarnings("unused")
     private void addMoreCoursesForStudent(AppDAO appDAO) {
 	int theId = 2;
 	Student student = appDAO.findStudentAndCoursesByStudentId(theId);
@@ -99,7 +101,7 @@ public class SpringMappingDemoApplication {
 
     @SuppressWarnings("unused")
     private void deleteCourseById(AppDAO appDAO) {
-	int theId = 10;
+	int theId = 12;
 	appDAO.deleteCourseById(theId);
     }
 
