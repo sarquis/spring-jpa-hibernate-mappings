@@ -31,9 +31,15 @@ public class SpringMappingDemoApplication {
 	    // findCourseAndStudents(appDAO);
 	    // findStudentAndCourses(appDAO);
 	    // addMoreCoursesForStudent(appDAO);
-	    deleteCourseById(appDAO);
+	    // deleteCourseById(appDAO);
+	    deleteStudent(appDAO);
 	};
 
+    }
+
+    private void deleteStudent(AppDAO appDAO) {
+	int theId = 1;
+	appDAO.deleteStudentById(theId);
     }
 
     @SuppressWarnings("unused")
